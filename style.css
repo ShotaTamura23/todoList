@@ -1,0 +1,285 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	デフォルトスタイル
+------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	outline: 0;
+	font-size: 1em;
+	box-sizing: border-box;
+	
+}
+body {
+  background: linear-gradient(87deg,#11cdef 0,#1171ef 100%)!important;
+}
+input:focus {
+    outline: none;
+}
+.bg_gray {
+  background: rgba(0,0,0,0.7);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.done {
+  background:rgba(0,0,0,0.3)!important;
+}
+.over {
+  background: rgba(248,215,218,0.3);
+}
+button{
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+button {
+  width: 90px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  padding: 1%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+button:hover {
+  transform: translateY(-1px);
+}
+#app ul {
+  margin: 0;
+  padding: 0;
+}
+dd {
+  margin: 0;
+}
+#app {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 860px;
+    box-sizing: border-box;
+    background: #fff;
+    margin: 120px auto;
+    padding: 50px;
+}
+#app ul {
+  list-style: none;
+}
+#app li > span.done {
+  text-decoration: line-through;
+} 
+.button_none {
+  pointer-events: none;
+}
+.inputArea {
+  box-sizing: border-box;
+  border-bottom: 1px solid #11CDEF;
+}
+.inputArea form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputArea form .task_txt{
+  display: block;
+  width: 60%;
+  margin: 0;
+}
+.inputArea form .task_limit{
+    display: block;
+    width: 20%;
+}
+.inputArea form .task_limit dt{
+  font-size: 13px;
+}
+.inputArea form .task_limit input{
+min-width: auto!important;
+}
+.inputArea input {
+  font-size: 18px;
+  width: 100%;
+  padding: 1%;
+  border: none;
+  box-sizing: border-box;
+}
+.inputArea button {
+  background-color: #C9F3E1;
+  color: #2AAE6F;
+  margin-bottom: 2%;
+}
+
+.list {
+    padding: 2% 1%;
+    margin: 2% auto;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.list dl {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.list dt {
+  width: 80%;
+  font-size: 18px;
+}
+.list dd{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.list dd p:first-of-type{
+  width: 130px;
+  text-align: center;
+}
+.list dd .btnArea{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 155px;
+}
+.list dd .btnArea button{
+    font-size: 14px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 70px;
+    padding: 8% 0;
+    transition: 0.5s;
+    cursor: pointer;
+    color: #000;
+}
+.list dd .btnArea li:last-of-type button{
+    color: #FF3709;
+    background-color: #FEE4DE;
+}
+
+.list dd p{
+  font-size: 14px;
+}
+
+.overLay {
+
+}
+.editArea {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background-color: #fff;
+  width: 700px;
+  box-sizing: border-box;
+  padding: 3% 4% 2%;
+  z-index: 2;
+  border-radius: 5px;
+}
+.editArea input {
+  border: none;
+}
+.editArea input.text {
+  font-size: 18px;
+  border-bottom: 1px solid #11CDEF;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+#app .editArea ul {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  margin: 3% 0;
+}
+#app .editArea dt {
+  width: 12%;
+}
+#app .editArea button {
+  display: block;
+  background-color: #C9F3E1;
+  color: #2AAE6F;
+  margin-bottom: 2%;
+  margin-right: 0;
+  margin-left: auto;
+}
+.editArea .editDate {
+  display: block;
+}
+.editArea .editDate dt {
+  font-size: 13px;
+}
+.editArea .editDate dd input {
+  font-size: 18px;
+}
+
+.stateFilter {
+  display: flex;
+  align-items: center;
+  margin: 2% auto;
+}
+.stateFilter p {
+  width: 10%;
+}
+.stateFilter ul {
+  display: flex;
+  width: 100%;
+}
+.stateFilter ul li {
+ width: 12%;
+ text-align: center;
+ margin-right: 2%;
+ padding: 4% 0;
+}
+.stateFilter ul li label{
+ display: block;
+ width: 100%;
+ cursor: pointer;
+ border-radius: 20px;
+}
+.stateFilter ul li label:hover{
+  color: #fff;
+  background-color: #393939;
+  box-sizing: border-box;
+}
+.active label{
+  color: #fff;
+  background-color: #393939;
+  box-sizing: border-box;
+}
+
+.all {
+  width: 12%;
+  padding: 0;
+  margin-right: 2%;
+}
+
+.stateFilter .crossDead {
+  width: 40%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 2px solid #f96240;
+  color: #f96240;
+  box-sizing: border-box;
+  padding: 0.5% 0;
+}
+.stateFilter .deadActive{
+  background-color: #f96240;
+  color: #fff;
+}
+.stateFilter .crossDead:hover {
+  opacity: 0.7;
+}

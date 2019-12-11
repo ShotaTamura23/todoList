@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- <h2>TODO</h2> -->
+  <div id="app">
+    <div class="inputArea">
+      <form v-on:submit.prevent>
+        <dl class="task_txt">
+          <dd><input type="text" v-model="newItem" 　placeholder="タスクを入力してください"></dd>
+        </dl>
+        <dl class="task_limit">
+          <dt>期限</dt>
+          <dd>
+            <v-date-picker :mode="mode" :formats="formats" v-model="selectedDate">
+            </v-date-picker>
+          </dd>
+        </dl>
+        <button v-on:click="addItem()">追加</button>
+      </form>
+    </div><!-- inputArea -->
+
+    <div class="overLay" v-bind:class="{bg_gray : bgActive}"></div>
+    <div class="stateFilter">
+      <p>状態：</p>
+
+      <ul class=" btnList">
+        <li class="all" v-on:click="clickBtnAll()" 　v-bind:class="{'active': this.selectAll}"><label>全て</label></li>
+        <li class="stateBtn" v-for="process in state" v-on:click="btnClick(process);"
+          v-bind:class="{'active': process.active}">
+          <label>
+            {{process.name}}
+          </label>
+        </li>
+      </ul>
+      <p class="crossDead" v-on:click="dedLineBtn" v-bind:class="{'deadActive': this.deadActive}">期限の近いタスクを表示</p>
+      <!-- {{ filtering.length }} -->
+    </div><!-- stateFilter -->
+
+    <div class="listArea">
+      <ul>
+        <!-- <li v-for="(list, index) in lists" :key="index"> -->
+        <li v-for="(list, index) in deadLineCross" :key="index">
+          <dl class="list" v-bind:class="{'done': list.done, 'over': list.over}">
+            <dt>{{ list.itemName }}</dt>
+            <dd>
+              <div class="listState">
+                <p v-if="list.limit < 0">
+                  {{overFunc(list)}}
+                  期限が過ぎています
+                </p>
+                <p v-else-if="list.limit == 0 ">
+                  {{overFunc(list)}}
+                  本日が期限です
+                </p>
+                <p v-else>
+                  {{overFunc(list)}}
+                  残り{{ list.limit }}日
+                </p>
+              </div>
+              <p>{{ list.state.name }}</p>
+              <ul class="btnArea">
+                <li>
+                  <button v-on:click="editItem(list)">編集</button>
+                </li>
+                <li>
+                  <button v-on:click=" deleteItem(index)">削除</button>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <div class="editArea" v-show="list.show">
+            <input type="text" v-model="list.itemName" class="text">
+            <ul>
+              <li v-for="process in state">
+                <label>
+                  <input type="radio" v-bind:value="process" v-model="list.state" @change="doneCheck(list)">
+                  {{process.name}}
+                </label>
+              </li>
+            </ul>
+            <dl class="editDate">
+              <dt>期限</dt>
+              <dd>
+                <v-date-picker :mode="mode" :formats="formats" v-model="list.selectedDate">
+                </v-date-picker>
+              </dd>
+            </dl>
+            <button v-on:click="doneEdit(list); limitCalc(list)">編集終了</button>
+          </div><!-- editArea -->
+        </li>
+      </ul>
+    </div><!-- listArea -->
+    <pre>
+      {{$data.lists}}
+    </pre>
+  </div>
+</body>
+<script src=" https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+<link rel='stylesheet' href='https://unpkg.com/v-calendar/lib/v-calendar.min.css'>
+<script src='https://unpkg.com/v-calendar'></script>
+<script type="text/javascript" src="action.js">
+</script>
+
+</html>
